@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerging Tech Hub Recordings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #2c3e50;
+            margin: 40px 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title {
+            color: #2c3e50;
+            margin: 40px 0 20px;
+            font-size: 1.8rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-image {
+            max-width: 100%;
+            max-height: 250px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            display: block;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .card-image[src^='data:image'] {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        .card:hover .card-image {
+            transform: scale(1.02);
+        }
+
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex: 1;
+        }
+
+        .card-field {
+            margin-bottom: 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .card-field:last-child {
+            border-bottom: none;
+            margin-top: auto;
+            padding-bottom: 0;
+        }
+
+        .field-label {
+            font-weight: 600;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .field-value {
+            color: #334155;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .zoom-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: #2D8CFF;
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 6px rgba(45, 140, 255, 0.2);
+        }
+
+        .zoom-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(45, 140, 255, 0.3);
+            background-color: #1a7aff;
+        }
+
+        .zoom-link::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>') no-repeat center center;
+            background-size: contain;
+        }
+
+        .zoom-link:hover {
+            background-color: #2681F2;
+        }
+
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">Emerging Tech Hub Recordings</h1>
+        
+        {% if future_events %}
+        <h2 class="section-title">Upcoming Sessions</h2>
+        <div class="cards-grid">
+            {% for card in future_events %}
+            <div class="card">
+                {% if card['Image'] %}
+                <div class="card-image-container">
+                    <img src="{{ card['Image'] }}" alt="Session image" class="card-image" onerror="this.style.display='none'">
+                </div>
+                {% endif %}
+                <div class="card-content">
+                    {% for field_name in field_order %}
+                        {% if card[field_name] and field_name != 'Image' %}
+                            <div class="card-field">
+                                <div class="field-label">{{ field_name }}</div>
+                                {% if field_name == 'Zoom link' %}
+                                    <a href="{{ card[field_name] }}" class="zoom-link" target="_blank">Join Meeting</a>
+                                {% else %}
+                                    <div class="field-value">{{ card[field_name] }}</div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if past_events %}
+        <h2 class="section-title">Past Sessions</h2>
+        <div class="cards-grid">
+            {% for card in past_events %}
+            <div class="card">
+                {% if card['Image'] %}
+                <div class="card-image-container">
+                    <img src="{{ card['Image'] }}" alt="Session image" class="card-image" onerror="this.style.display='none'">
+                </div>
+                {% endif %}
+                <div class="card-content">
+                    {% for field_name in field_order %}
+                        {% if card[field_name] and field_name != 'Image' %}
+                            <div class="card-field">
+                                <div class="field-label">{{ field_name }}</div>
+                                {% if field_name == 'Zoom link' %}
+                                    <a href="{{ card[field_name] }}" class="zoom-link" target="_blank">Watch</a>
+                                {% else %}
+                                    <div class="field-value">{{ card[field_name] }}</div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
